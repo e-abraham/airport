@@ -1,19 +1,22 @@
 const Passenger = require("./Passenger");
-const Bag = require("./Bag");
+const Person = require("./Person");
 
 describe("Passenger objects", () => {
-    const testPassenger = new Passenger("Stacy");
-    const testBag = new Bag(15);
-    test("passenger has name", () => {
-        expect(testPassenger.name).toBe("Stacy");
+    const testPassenger = new Passenger("Macy");
+    test("Passenger has a name", () => {
+        expect(testPassenger.name).toBe("Macy");
     })
 
-    test("passenger has bags", () => {
-        expect(Array.isArray(testPassenger.bags)).toBe(true);
+    test("Passenger can call attendance", () => {
+        testPassenger.callAttendent();
+        expect(testPassenger.callAttendent()).toBe("Excuse me, I have a question.");
     })
 
-    test("passenger can add bags", () => {
-        testPassenger.addBag(testBag);
-        expect(testPassenger.bags.length).toBe(1);
+    test("object is an instance of Passenger", () => {
+        expect(testPassenger instanceof Passenger).toBeTruthy();
+    })
+
+    test("Passenger object extends Person class", () => {
+        expect(testPassenger instanceof Person).toBeTruthy();
     })
 })

@@ -1,5 +1,6 @@
 const Plane = require("./Plane");
 const Passenger = require("./Passenger");
+const Crew = require("./Crew");
 
 describe("Plane objects", () => {
     const testPlane = new Plane("L1A4")
@@ -18,6 +19,12 @@ describe("Plane objects", () => {
         expect(testPlane.passengers.length).toBe(1);
     })
 
+    test("plane can add crew", () => {
+        const testCrew = new Crew("Jae", "Air Marshall", 2);
+        testPlane.addCrew(testCrew);
+        expect(testPlane.crew.length).toBe(1);
+    })
+
     test("can give plane landed location", () => {
         testPlane.setLandedAt("Miami");
         expect(testPlane.landedAt).toBe("Miami");
@@ -27,4 +34,5 @@ describe("Plane objects", () => {
         testPlane.setDestination("DFW");
         expect(testPlane.destination).toBe("DFW");
     })
+
 })
